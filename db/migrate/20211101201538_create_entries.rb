@@ -3,7 +3,7 @@ class CreateEntries < ActiveRecord::Migration[6.1]
     create_table :entries do |t|
       t.string :date
       t.string :mood
-      t.string :note
+      t.string :note 
 
       t.timestamps
     end
