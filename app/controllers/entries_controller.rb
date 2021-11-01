@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
-    @entries = Entry.all
+    @entries = current_user.entries.all
 
     render json: @entries
   end
@@ -15,7 +15,8 @@ class EntriesController < ApplicationController
 
   # POST /entries
   def create
-    @entry = Entry.new(entry_params)
+    # @entry = Entry.new(entry_params)
+    @entry = current_user.entries.build(entry_params)
 
     if @entry.save
       render json: @entry, status: :created, location: @entry
@@ -41,7 +42,7 @@ class EntriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
-      @entry = Entry.find(params[:id])
+      @entry = current_user.entries.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
