@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.build(entry_params)
 
     if @entry.save
-      render json: @entry, status: :created, location: @entry
+      render json: @entry
     else
       render json: @entry.errors, status: :unprocessable_entity
     end
