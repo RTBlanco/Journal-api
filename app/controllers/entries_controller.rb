@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
-    @entries = current_user.entries.all
+    @entries = current_user.entries.all.map{ |entry| entry.serialize }
 
     render json: @entries
   end
@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.build(entry_params)
 
     if @entry.save
-      render json: @entry
+      render json: @entry.serialize
     else
       render json: @entry.errors, status: :unprocessable_entity
     end
@@ -44,6 +44,7 @@ class EntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
       @entry = current_user.entries.find(params[:id])
+      @entries.serialize
     end
 
     # Only allow a list of trusted parameters through.

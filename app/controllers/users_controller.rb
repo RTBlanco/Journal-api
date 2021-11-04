@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user.serialize
+    render json: @user
   end
 
   # POST /users
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       @token = encode_token(user_id: @user.id)
       # render json: @user, status: :created, 
-      render json: {user: @user, jwt: @token}
+      render json: {user: @user.serialize, jwt: @token}
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = current_user
+      @user = current_user.serialize
     end
 
     # Only allow a list of trusted parameters through.
