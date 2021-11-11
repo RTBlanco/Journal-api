@@ -18,6 +18,7 @@ class EntriesController < ApplicationController
     # @entry = Entry.new(entry_params)
     @entry = current_user.entries.build(entry_params)
 
+    # binding.pry
     if @entry.save
       render json: @entry.serialize
     else
