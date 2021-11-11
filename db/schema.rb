@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_144736) do
+ActiveRecord::Schema.define(version: 2021_11_01_201538) do
 
   create_table "entries", force: :cascade do |t|
-    t.datetime "date"
+    t.string "date"
     t.string "mood"
     t.string "note"
     t.integer "user_id"
