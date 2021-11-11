@@ -52,9 +52,4 @@ class EntriesController < ApplicationController
     def entry_params
       params.permit(:date, :mood, :note)
     end
-
-    # checks to see if the date is valid
-    def valid_date? 
-
-    end
 end
