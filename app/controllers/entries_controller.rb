@@ -16,9 +16,9 @@ class EntriesController < ApplicationController
   # POST /entries
   def create
     # @entry = Entry.new(entry_params)
+    # binding.pry
     @entry = current_user.entries.build(entry_params)
 
-    # binding.pry
     if @entry.save
       render json: @entry.serialize
     else
@@ -51,5 +51,10 @@ class EntriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def entry_params
       params.permit(:date, :mood, :note)
+    end
+
+    # checks to see if the date is valid
+    def valid_date? 
+
     end
 end
