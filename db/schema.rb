@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_11_01_201538) do
 
   create_table "entries", force: :cascade do |t|
-    t.string "date"
+    t.datetime "date"
     t.string "mood"
     t.string "note"
     t.integer "user_id"
